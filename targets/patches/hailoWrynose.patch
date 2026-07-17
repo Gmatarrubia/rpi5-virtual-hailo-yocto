@@ -1,0 +1,28 @@
+--- a/meta-hailo-libhailort/conf/layer.conf	2026-07-17 17:20:30.749280606 +0200
++++ b/meta-hailo-libhailort/conf/layer.conf	2026-07-17 17:30:44.305919817 +0200
+@@ -10,4 +10,4 @@
+ BBFILE_PRIORITY_meta-hailo-libhailort = "8"
+
+ LAYERDEPENDS_meta-hailo-libhailort = "core"
+-LAYERSERIES_COMPAT_meta-hailo-libhailort = "scarthgap"
++LAYERSERIES_COMPAT_meta-hailo-libhailort = "scarthgap wrynose"
+
+--- a/meta-hailo-accelerator/conf/layer.conf	2026-07-17 17:20:30.749280606 +0200
++++ b/meta-hailo-accelerator/conf/layer.conf	2026-07-17 17:33:22.974424827 +0200
+@@ -10,4 +10,4 @@
+ BBFILE_PRIORITY_meta-hailo-accelerator = "8"
+
+ LAYERDEPENDS_meta-hailo-accelerator = "core"
+-LAYERSERIES_COMPAT_meta-hailo-accelerator = "scarthgap"
++LAYERSERIES_COMPAT_meta-hailo-accelerator = "scarthgap wrynose"
+
+--- a/meta-hailo-vpu/conf/layer.conf	2026-07-17 17:20:30.751280272 +0200
++++ b/meta-hailo-vpu/conf/layer.conf	2026-07-17 17:34:44.635322362 +0200
+@@ -13,4 +13,4 @@
+     core \
+     meta-hailo-libhailort"
+
+-LAYERSERIES_COMPAT_meta-hailo-vpu = "scarthgap"
++LAYERSERIES_COMPAT_meta-hailo-vpu = "scarthgap wrynose"
+
+local

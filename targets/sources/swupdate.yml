@@ -1,0 +1,13 @@
+header:
+  version: 19
+
+repos:
+  meta-swupdate:
+    url: https://github.com/sbabic/meta-swupdate.git
+    path: sources/meta-swupdate
+    branch: wrynose
+
+local_conf_header:
+  append_swupdate_configs: |
+    #SWUPDATE_SIGNING = "RSA"
+    #SWUPDATE_PRIVATE_KEY =

@@ -1,0 +1,13 @@
+[Unit]
+Description=Validate and commit Raspberry Pi A/B update
+After=multi-user.target homeassistant.service
+Requires=homeassistant.service
+ConditionPathExists=/proc/device-tree/chosen/bootloader/tryboot
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/rpi-ab-commit.sh
+TimeoutStartSec=120
+
+[Install]
+WantedBy=multi-user.target

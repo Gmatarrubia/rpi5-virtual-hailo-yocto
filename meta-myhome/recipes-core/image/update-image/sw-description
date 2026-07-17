@@ -1,0 +1,60 @@
+software =
+{
+	version = "0.1.0";
+	bootloader_transition_marker = false;
+	bootloader_state_marker = false;
+
+	@@MACHINE@@ = {
+		hardware-compatibility: [ "1.0"];
+		stable : {
+			copyA : {
+				images: (
+					{
+						filename = "swupdate-podman-hass-image-@@MACHINE@@.rootfs.ext4.gz";
+						type = "raw";
+						compressed = "zlib";
+						device = "/dev/disk/by-label/rootfs-a";
+						sha256 = "$swupdate_get_sha256(swupdate-podman-hass-image-@@MACHINE@@.rootfs.ext4.gz)";
+					},
+					{
+						filename = "swupdate-podman-hass-boot.vfat";
+						decive = "/dev/disk/by-label/boot-a";
+						sha256 = "$swupdate_get_sha256(swupdate-podman-hass-boot.vfat)";
+						type = "raw";
+					}
+				);
+				scripts: (
+					{
+						filename = "ab-update-hook.sh";
+						type = "shellscript";
+						data = "A";
+					}
+				)
+			};
+			copyB : {
+				images: (
+					{
+						filename = "swupdate-podman-hass-image-@@MACHINE@@.rootfs.ext4.gz";
+						type = "raw";
+						compressed = "zlib";
+						device = "/dev/disk/by-label/rootfs-b";
+						sha256 = "$swupdate_get_sha256(swupdate-podman-hass-image-@@MACHINE@@.rootfs.ext4.gz)";
+					},
+					{
+						filename = "swupdate-podman-hass-boot.vfat";
+						decive = "/dev/disk/by-label/boot-b";
+						sha256 = "$swupdate_get_sha256(swupdate-podman-hass-boot.vfat)";
+						type = "raw";
+					}
+				);
+				scripts: (
+					{
+						filename = "ab-update-hook.sh";
+						type = "shellscript";
+						data = "B";
+					}
+				)
+			};
+		};
+	}
+}

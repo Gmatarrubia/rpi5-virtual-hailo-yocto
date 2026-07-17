@@ -1,0 +1,23 @@
+Signed-off-by: Torsten Duwe <d...@suse.de>
+Reviewed-by: Peter Robinson <pbrobin...@gmail.com>
+Tested-by: Peter Robinson <pbrobin...@gmail.com>
+Upstream-Status: Inappropriate [oe specific]
+---
+ configs/rpi_arm64_defconfig | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/configs/rpi_arm64_defconfig b/configs/rpi_arm64_defconfig
+index cdcf05ea6db..fb0fdce1d7f 100644
+--- a/configs/rpi_arm64_defconfig
++++ b/configs/rpi_arm64_defconfig
+@@ -15,7 +15,8 @@
+ CONFIG_OF_BOARD_SETUP=y
+ CONFIG_FDT_SIMPLEFB=y
+ CONFIG_USE_PREBOOT=y
+-CONFIG_PREBOOT="pci enum; usb start;"
++CONFIG_PREBOOT="pci enum; usb start; nvme scan;"
++CONFIG_NVME_PCI=y
+ CONFIG_SYS_PBSIZE=1049
+ # CONFIG_DISPLAY_CPUINFO is not set
+ # CONFIG_DISPLAY_BOARDINFO is not set
+

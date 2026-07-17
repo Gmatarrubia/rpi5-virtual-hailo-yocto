@@ -1,0 +1,7 @@
+header:
+  version: 19
+  includes:
+    - targets/sourcesmyhome.yml
+    - targets/sourcescommon.yml
+
+machine: qemuarm

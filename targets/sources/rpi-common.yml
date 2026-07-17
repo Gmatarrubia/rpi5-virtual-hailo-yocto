@@ -1,0 +1,17 @@
+header:
+  version: 19
+
+repos:
+  meta-myhome-rpi:
+    path: meta-myhome-rpi
+
+  meta-raspberrypi:
+    url: https://github.com/agherzan/meta-raspberrypi
+    path: sources/meta-raspberrypi
+    branch: wrynose
+
+local_conf_header:
+  rpi_license_configs: |
+    LICENSE_FLAGS_ACCEPTED += "synaptics-killswitch"
+  wic_configs: |
+    WIC_CREATE_EXTRA_ARGS = "--no-fstab-update"

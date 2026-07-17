@@ -1,0 +1,31 @@
+[Unit]
+Description=Home Assistant
+Wants=network-online.target
+After=network-online.target podman.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+
+User=@HOMEASSISTANT_USER@
+WorkingDirectory=@HOMEASSISTANT_DIR@
+
+# Allow enough time for the first image download.
+TimeoutStartSec=10min
+TimeoutStopSec=60s
+
+# Update images before starting the containers.
+ExecStartPre=/usr/bin/podman-compose pull
+
+# Start containers in detached mode.
+ExecStart=/usr/bin/podman-compose up -d
+
+# Stop and remove the containers when stopping the service.
+ExecStop=/usr/bin/podman-compose down
+
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,14 @@
+# short-description: Create Raspberry Pi USB card image
+# long-description: Creates a partitioned USB card image for use with
+# Raspberry Pi. Boot files are located in the first vfat partition.
+# A/B rootfs is configured as two fixed-size 50 GiB partitions for update slots.
+
+part --source rootfs --change-directory=bootselector --ondisk sda --fstype=vfat --label autoboot --active --align 4096 --size 100
+part /boota --source bootimg-partition --ondisk sda --fstype=vfat --label boot-a --align 4096 --size 100
+part /bootb --source bootimg-partition --ondisk sda --fstype=vfat --label boot-b --align 4096 --size 100
+part / --source rootfs --exclude-path bootselector --ondisk sda --fstype=ext4 --label rootfs-a --align 4096 --size 50G
+part / --source rootfs --exclude-path bootselector --ondisk sda --fstype=ext4 --label rootfs-b --align 4096 --size 50G
+part /data --ondisk sda --fstype=ext4 --label data --align 4096 --size 5G
+part /data2 --ondisk sda --fstype=ext4 --label data2 --align 4096 --size 5G
+
+bootloader --ptable gpt
