@@ -1,0 +1,26 @@
+header:
+  version: 19
+
+repos:
+  meta-hailo-patches:
+    path: targets/patches
+    layers:
+      .: disabled
+
+  meta-hailo:
+    url: https://github.com/Gmatarrubia/meta-hailo.git
+    path: sources/meta-hailo
+    branch: wrynose
+    layers:
+      meta-hailo-libhailort:
+      meta-hailo-accelerator:
+#      meta-hailo-vpu:
+#    patches:
+#      hailo-wrynose-patch:
+#        repo: meta-hailo-patches
+#        path: hailoWrynose.patch
+
+local_conf_header:
+  hailo_local_configs: |
+    OVERRIDES:append = ":hailo"
+#    BBMAKS += "sources/meta-hailo/meta-hailo-vpu/recipes-firmware/hailo15-nnc-fw/hailo15-nnc-fw_5.3.0.bb"

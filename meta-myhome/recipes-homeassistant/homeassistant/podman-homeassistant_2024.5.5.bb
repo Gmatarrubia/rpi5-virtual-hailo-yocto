@@ -19,6 +19,7 @@ SRC_URI += "\
 # Container engine dependencies
 RDEPENDS:${PN} = " \
     podman \
+    podman-compose \
 "
 
 SYSTEMD_AUTO_ENABLE = "enable"
@@ -37,7 +38,6 @@ do_install:append () {
     ln -s "${systemd_unitdir}/system/homeassistant.service" "${D}${sysconfdir}/systemd/system/multi-user.target.wants/homeassistant.service"
     sed -i -e 's,@HOMEASSISTANT_DIR@,${HOMEASSISTANT_DIR},g' "${D}${systemd_unitdir}/system/homeassistant.service"
     sed -i -e 's,@HOMEASSISTANT_USER@,${HOMEASSISTANT_USER},g' "${D}${systemd_unitdir}/system/homeassistant.service"
-
 }
 
 FILES:${PN} += "\

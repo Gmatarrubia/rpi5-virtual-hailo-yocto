@@ -14,3 +14,5 @@ overrides:
       commit: d97b5602d7f64422c94b7311466cda7f6b1962d5
     meta-raspberrypi:
       commit: f62c67921474370829d24a4fa01ef88543f3906b
+    meta-hailo:
+      commit: 3e8945b67eb3e057e358f936f2483f3a32baa3ee

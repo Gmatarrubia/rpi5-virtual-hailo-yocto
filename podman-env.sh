@@ -21,6 +21,7 @@ podman run \
     --replace \
     --hostname yocto-builder \
     --mount type=bind,source="${repoPath}",target=/yocto \
+    -v "${repoPath}"/.bash_history:/home/ubuntu/.bash_history:Z \
     --env SHELL="/bin/bash" \
     yocto-env:latest \
     "${@}"

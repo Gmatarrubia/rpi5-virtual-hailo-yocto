@@ -1,0 +1,44 @@
+header:
+  version: 19
+  includes:
+    - targets/sources/virtualization.yml
+    - targets/sources/hailo.yml
+
+repos:
+  meta-myhome:
+    path: meta-myhome
+
+  bitbake:
+    url: https://git.openembedded.org/bitbake
+    path: sources/bitbake
+    tag: yocto-6.0.2
+    layers:
+      .: disabled
+
+  openembedded-core:
+    url: https://git.openembedded.org/openembedded-core
+    path: sources/oe-core
+    branch: wrynose
+    layers:
+      meta:
+  meta-yocto:
+    url: https://git.yoctoproject.org/meta-yocto
+    path: sources/meta-yocto
+    branch: wrynose
+    layers:
+      meta-poky:
+      meta-yocto-bsp:
+
+  meta-openembedded:
+    url: https://github.com/openembedded/meta-openembedded
+    path: sources/meta-openembedded
+    branch: wrynose
+    layers:
+      meta-oe:
+      meta-python:
+      meta-networking:
+      meta-perl:
+      meta-multimedia:
+      meta-filesystems:
+      meta-webserver:
+

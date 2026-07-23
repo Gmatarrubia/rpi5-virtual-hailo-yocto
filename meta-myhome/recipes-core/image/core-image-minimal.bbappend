@@ -9,6 +9,13 @@ EXTRA_USERS_PARAMS = " \
 	--user-group ${BOB_USER_NAME};\
 "
 
+HAILO_PKGS = ""
+HAILO_PKGS:hailo = "\
+    packagegroup-hailo-hailort \
+    hailo-firmware \
+    hailo-pci \
+"
+
 CORE_IMAGE_EXTRA_INSTALL += " \
     linux-firmware-bcm43430 \
     bridge-utils \
@@ -17,13 +24,13 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     avahi-daemon \
     kernel-modules \
     openssh openssh-keygen openssh-sftp-server \
-    ntp ntp-tickadj \
+    ntp \
     packagegroup-core-boot \
     procps \
     tzdata \
     iw \
-    wpa-supplicant \
     xdg-user-dirs \
     nano \
     podman-homeassistant \
+    ${HAILO_PKGS} \
 "
