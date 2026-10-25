@@ -41,7 +41,13 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     raspi-gpio \
     rpio \
     rpi-gpio \
+    htop \
+    rsync \
     ${HAILO_PKGS} \
+"
+
+CORE_IMAGE_EXTRA_INSTALL:append:debug = "\
+    sudo \
 "
 
 # ROOTFS Size configs

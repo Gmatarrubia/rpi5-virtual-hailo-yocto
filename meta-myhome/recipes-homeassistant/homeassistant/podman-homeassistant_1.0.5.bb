@@ -2,14 +2,8 @@ SUMMARY = "Open-source home automation platform running on Docker Compose contai
 HOMEPAGE = "https://home-assistant.io/"
 LICENSE = "CLOSED"
 
-inherit bob-user systemd
-
-HOMEASSISTANT_USER ?= "${BOB_USER_NAME}"
-HOMEASSISTANT_USER[doc] = "homeassistent service runs as docker compose container."
-HOMEASSISTANT_DIR ?= "/home/${HOMEASSISTANT_USER}/homeassistant"
-HOMEASSISTANT_DIR[doc] = "Installation directory used by home-assistant."
-HOMEASSISTANT_CONFIG_DIR ?= "${HOMEASSISTANT_DIR}/config"
-HOMEASSISTANT_CONFIG_DIR[doc] = "Configuration directory used by home-assistant."
+inherit systemd
+require homeassistant.inc
 
 SRC_URI += "\
     file://homeassistant.service \
@@ -27,6 +21,7 @@ RDEPENDS:${PN} = " \
     bash \
     podman \
     podman-compose \
+    homeassistant-install \
 "
 
 SYSTEMD_AUTO_ENABLE = "enable"
@@ -47,7 +42,7 @@ do_install:append () {
     install -d "${D}${sysconfdir}/systemd/system/multi-user.target.wants/"
     install -m 0644 "${UNPACKDIR}/homeassistant.service" "${D}${systemd_unitdir}/system/"
     ln -s "${systemd_unitdir}/system/homeassistant.service" "${D}${sysconfdir}/systemd/system/multi-user.target.wants/homeassistant.service"
-    sed -i -e 's,@HOMEASSISTANT_DIR@,${HOMEASSISTANT_DIR},g' "${D}${systemd_unitdir}/system/homeassistant.service"
+    sed -i -e 's,@HOMEASSISTANT_DIR_INSTALL@,${HOMEASSISTANT_DIR_INSTALL},g' "${D}${systemd_unitdir}/system/homeassistant.service"
     sed -i -e 's,@HOMEASSISTANT_USER@,${HOMEASSISTANT_USER},g' "${D}${systemd_unitdir}/system/homeassistant.service"
 }
 

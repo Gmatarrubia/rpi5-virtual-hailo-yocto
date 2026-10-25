@@ -1,7 +1,7 @@
 [Unit]
 Description=Home Assistant
 Wants=network-online.target
-After=network-online.target podman.service
+After=network-online.target podman.service hass-install.service
 StartLimitIntervalSec=0
 
 [Service]
@@ -9,7 +9,7 @@ Type=oneshot
 RemainAfterExit=yes
 
 User=@HOMEASSISTANT_USER@
-WorkingDirectory=@HOMEASSISTANT_DIR@
+WorkingDirectory=@HOMEASSISTANT_DIR_INSTALL@
 
 # Allow enough time for the first image download.
 TimeoutStartSec=10min
