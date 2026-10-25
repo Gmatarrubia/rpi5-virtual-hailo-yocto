@@ -2,7 +2,7 @@ SUMMARY = "Open-source home automation platform running on Docker Compose contai
 HOMEPAGE = "https://home-assistant.io/"
 LICENSE = "CLOSED"
 
-inherit bob-user-vars systemd
+inherit bob-user systemd
 
 HOMEASSISTANT_USER ?= "${BOB_USER_NAME}"
 HOMEASSISTANT_USER[doc] = "homeassistent service runs as docker compose container."
@@ -36,7 +36,7 @@ do_install:append () {
     # Install docker compose stuff
     install -d "${D}${HOMEASSISTANT_DIR}"
     rsync -a "${UNPACKDIR}/" "${D}${HOMEASSISTANT_DIR}/"
-    chown -R "${HOMEASSISTANT_USER}" "${D}${HOMEASSISTANT_DIR}"
+    chown -R "${HOMEASSISTANT_USER}:${HOMEASSISTANT_USER}" "${D}${HOMEASSISTANT_DIR}"
     chmod -R 755 "${D}${HOMEASSISTANT_DIR}"
 
     # Replace compose.yml with the correct version

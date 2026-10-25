@@ -1,7 +1,7 @@
 SUMMARY = "SSH keys for bob user"
 LICENSE = "CLOSED"
 
-inherit bob-user-vars
+inherit bob-user
 
 SSH_KEYS_DIR = "${BOB_USER_PATH}/.ssh"
 
@@ -15,6 +15,7 @@ do_install:append() {
     if [ -f "/home/ubuntu/.ssh/id_rsa.pub" ]; then
         install -m 0600 "/home/ubuntu/.ssh/id_rsa.pub" \
             "${D}/${SSH_KEYS_DIR}/authorized_keys"
+        chown -R "${BOB_USER_NAME}:${HOMEASSISTANT_USER}" "${D}/${SSH_KEYS_DIR}"
     else
         bbwarn "No public key found for host user. No authorized_keys file will be created."
     fi
