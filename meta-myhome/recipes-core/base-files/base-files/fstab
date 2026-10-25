@@ -7,5 +7,5 @@ tmpfs                /run                 tmpfs      mode=0755,nodev,nosuid,stri
 tmpfs                /var/volatile        tmpfs      defaults              0  0
 
 /dev/sda1       /boot                auto       defaults,sync         0  0
-/dev/sda5       /data               auto       defaults,sync         0  0
-/dev/sda6       /data2               auto       defaults,sync         0  0
+/dev/sda6       /data               auto       defaults,sync         0  0
+/dev/sda7       /data2               auto       defaults,sync         0  0

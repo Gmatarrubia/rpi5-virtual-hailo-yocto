@@ -7,7 +7,7 @@ TARGET="$2"
 case "$PHASE" in 
     preinst)
         CURRENT=$(rpi-abctl status | sed -n 's/^Running slot: //p')
-        ["$CURRENT" != "$TARGET"] || exit 1
+        [ "$CURRENT" != "$TARGET" ] || exit 1
 
         rpi-abctl prepare
         ;;

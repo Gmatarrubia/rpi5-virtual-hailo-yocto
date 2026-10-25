@@ -1,6 +1,6 @@
 rootfs=`swupdate -g`
 
-if [ $rootfs == '/dev/sda5' ];then
+if [ $rootfs == '/dev/sda4' ];then
 	selection="-e stable,copyB"
 else
 	selection="-e stable,copyA"

@@ -8,6 +8,7 @@ inherit swupdate
 SRC_URI = "\
     file://emmcsetup.lua \
     file://sw-description \
+    file://ab-update-hook.sh \
 "
 
 # images to build before building swupdate image
