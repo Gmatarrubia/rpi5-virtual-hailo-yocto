@@ -13,4 +13,4 @@ else
 fi
 
 SWUPDATE_WEBSERVER_ARGS="--document-root /www --port 8080"
-SWUPDATE_ARGS="-H @MACHINE@:1.0 ${selection} -p 'reboot' -f ${CFGFILE}"
+SWUPDATE_ARGS="-H @MACHINE@:1.0 ${selection} -p '/usr/bin/tryboot.sh' ' -f ${CFGFILE}"
