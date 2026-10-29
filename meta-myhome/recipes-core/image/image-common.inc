@@ -43,6 +43,9 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     rpi-gpio \
     htop \
     rsync \
+    expand-fs-service \
+    e2fsprogs-resize2fs \
+    e2fsprogs-e2fsck \
     ${HAILO_PKGS} \
 "
 
@@ -51,5 +54,5 @@ CORE_IMAGE_EXTRA_INSTALL:append:debug = "\
 "
 
 # ROOTFS Size configs
-IMAGE_ROOTFS_SIZE = "36700160"
+IMAGE_ROOTFS_SIZE = "2097152"
 IMAGE_ROOTFS_EXTRA_SPACE := ""

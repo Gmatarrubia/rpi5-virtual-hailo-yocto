@@ -9,7 +9,10 @@ SRC_URI += " \
     file://tryboot.sh \
 "
 
-RDEPENDS:${PN} = "rpi-abctl"
+RDEPENDS:${PN} += "\
+    rpi-abctl \
+    bash \
+"
 
 do_install:append() {
     install -m 0644 "${UNPACKDIR}"/09-swupdate-args "${D}${libdir}/swupdate/conf.d/"

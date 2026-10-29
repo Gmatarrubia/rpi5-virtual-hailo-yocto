@@ -1,0 +1,19 @@
+[Unit]
+Description=Expands filesystem to the maximum partition size
+Wants=local-fs.target
+After=local-fs.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+
+# Allow enough time for the first image download.
+TimeoutStartSec=15
+
+# Start containers in detached mode.
+ExecStart=/usr/bin/expand-fs.sh
+
+[Install]
+WantedBy=multi-user.target
+

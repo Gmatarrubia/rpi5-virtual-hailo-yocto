@@ -16,6 +16,8 @@ then
     rsa_pub_arg="--mount=type=bind,source=${HOME}/.ssh/,target=/home/ubuntu/.ssh/,readonly"
 fi
 
+touch .bash_history
+
 podman run \
     -it --rm \
     --privileged \
