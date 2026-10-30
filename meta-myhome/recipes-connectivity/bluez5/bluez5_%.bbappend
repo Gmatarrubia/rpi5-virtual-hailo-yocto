@@ -1,1 +1,1 @@
-SYSTEMD_AUTO_ENABLE = "disabled"
+SYSTEMD_AUTO_ENABLE = "disable"
