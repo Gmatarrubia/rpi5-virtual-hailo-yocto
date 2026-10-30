@@ -5,21 +5,20 @@ After=network-online.target podman.service hass-install.service
 StartLimitIntervalSec=0
 
 [Service]
-Type=oneshot
-RemainAfterExit=yes
+Type=notify
 
-User=@HOMEASSISTANT_USER@
+#User=@HOMEASSISTANT_USER@
 WorkingDirectory=@HOMEASSISTANT_DIR_INSTALL@
 
+# Allows systemd-notify command reports success.
+NotifyAccess=all
+
 # Allow enough time for the first image download.
-TimeoutStartSec=10min
+TimeoutStartSec=5min
 TimeoutStopSec=60s
 
-# Update images before starting the containers.
-ExecStartPre=/usr/bin/podman-compose pull
-
 # Start containers in detached mode.
-ExecStart=/usr/bin/podman-compose up -d
+ExecStart=/usr/bin/homeassistant-start-ctl.sh
 
 # Stop and remove the containers when stopping the service.
 ExecStop=/usr/bin/podman-compose down

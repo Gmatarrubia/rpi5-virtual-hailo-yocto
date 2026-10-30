@@ -6,22 +6,22 @@ services:
     volumes:
       - /data/homeassistant/config:/config
       - /etc/localtime:/etc/localtime:ro
-      - /run/dbus:/run/dbus:ro
+      - /run/dbus:/run/dbus
     cap_add:
       - NET_ADMIN
       - NET_RAW
     restart: unless-stopped
     network_mode: host
-#    devices:
+    devices:
+       - /dev/ttyACM0:/dev/ttyACM0
 #      - /dev/ttyUSB0:/dev/ttyUSB0
-#      - /dev/ttyACM0:/dev/ttyACM0
 #      - /dev/hidraw0:/dev/hidraw0
     environment:
       DISABLE_JEMALLOC: 'true'
 ##
   nginx:
     container_name: nginx
-    image: docker.io/rhasspy/wyoming-whisper:latest
+    image: docker.io/library/nginx:latest
     volumes:
       - /data/homeassistant/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - /data/homeassistant/nginx/ssl:/etc/nginx/ssl:ro
@@ -36,7 +36,7 @@ services:
       - apparmor=unconfined
     volumes:
       - /opt/matter-server:/data
-      - /run/dbus:/run/dbus:ro
+      - /run/dbus:/run/dbus
     network_mode: host
 ##
   mosquitto:

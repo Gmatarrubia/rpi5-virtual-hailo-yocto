@@ -9,6 +9,7 @@ SRC_URI += "\
     file://homeassistant.service \
     file://ha_backup.tar.gz \
     file://compose.yml \
+    file://homeassistant-start-ctl.sh \
 "
 
 do_configure[noexec] = "1"
@@ -37,6 +38,10 @@ do_install:append () {
     # Replace compose.yml with the correct version
     install -m 0644 "${UNPACKDIR}/compose.yml" "${D}${HOMEASSISTANT_DIR}/compose.yml"
 
+    # Install start control script
+    install -d "${D}${bindir}"
+    install -m 0755 "${UNPACKDIR}/homeassistant-start-ctl.sh" "${D}${bindir}/homeassistant-start-ctl.sh"
+
     # Install systemd unit files and set correct config directory
     install -d "${D}${systemd_unitdir}/system"
     install -d "${D}${sysconfdir}/systemd/system/multi-user.target.wants/"
@@ -49,5 +54,6 @@ do_install:append () {
 FILES:${PN} += "\
     ${HOMEASSISTANT_DIR}/* \
     ${systemd_unitdir}/system/* \
+    ${bindir}/homeassistant-start-ctl.sh \
     ${sysconfdir}/systemd/system/multi-user.target.wants/* \
 "

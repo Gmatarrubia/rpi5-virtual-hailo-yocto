@@ -7,6 +7,7 @@ SRC_URI += " \
     file://swupdate.cfg \
     file://autoboot.txt \
     file://tryboot.sh \
+    file://image.jpg \
 "
 
 RDEPENDS:${PN} += "\
@@ -26,6 +27,8 @@ do_install:append() {
 
     install -d "${D}/${bindir}"
     install -m 0755 "${UNPACKDIR}/tryboot.sh" "${D}/${bindir}/tryboot.sh"
+
+    install -m 0755 "${UNPACKDIR}/image.jpg" "${D}/www/images/background.jpg"
 }
 
 FILES:${PN} += "bootselector/autoboot.txt"
