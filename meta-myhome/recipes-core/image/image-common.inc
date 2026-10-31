@@ -46,11 +46,11 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     expand-fs-service \
     e2fsprogs-resize2fs \
     e2fsprogs-e2fsck \
+    sudo \
     ${HAILO_PKGS} \
 "
 
 CORE_IMAGE_EXTRA_INSTALL:append:debug = "\
-    sudo \
 "
 
 # ROOTFS Size configs
