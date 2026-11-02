@@ -7,8 +7,9 @@ EXTRA_USERS_PARAMS = " \
 	--create-home --home-dir ${BOB_USER_PATH} \
 	--groups users \
 	--user-group \
-    --password ${BOB_USER_PASSWORD} \
-    --shell /bin/sh \
+    --system \
+    --password '${BOB_USER_PASSWORD}' \
+    --shell /bin/bash \
     ${BOB_USER_NAME}; \
 "
 
