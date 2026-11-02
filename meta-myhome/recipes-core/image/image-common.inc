@@ -48,6 +48,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     e2fsprogs-resize2fs \
     e2fsprogs-e2fsck \
     sudo \
+    containers-mount \
     ${HAILO_PKGS} \
 "
 

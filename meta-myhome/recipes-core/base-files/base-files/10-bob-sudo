@@ -1,0 +1,2 @@
+# Makes bob sudo user
+bob ALL=(ALL:ALL) ALL
