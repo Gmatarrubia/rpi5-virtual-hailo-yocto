@@ -18,10 +18,10 @@ TimeoutStartSec=5min
 TimeoutStopSec=60s
 
 # Start containers in detached mode.
-ExecStart=/usr/bin/homeassistant-start-ctl.sh
+ExecStart=/usr/bin/homeassistant-ctl.sh start
 
 # Stop and remove the containers when stopping the service.
-ExecStop=/usr/bin/podman-compose down
+ExecStop=/usr/bin/homeassistant-ctl.sh stop
 
 Restart=on-failure
 RestartSec=10s
