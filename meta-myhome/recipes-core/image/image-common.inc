@@ -53,7 +53,12 @@ CORE_IMAGE_EXTRA_INSTALL += " \
 "
 
 CORE_IMAGE_EXTRA_INSTALL:append:debug = "\
+    socat \
+    git \
+    python3-pip \
 "
+
+EXTRA_IMAGE_FEATURES:append:debug = " allow-empty-password allow-root-login empty-root-password"
 
 # ROOTFS Size configs
 IMAGE_ROOTFS_SIZE = "2097152"

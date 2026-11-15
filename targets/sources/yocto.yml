@@ -1,0 +1,11 @@
+header:
+  version: 19
+
+repos:
+  meta-yocto:
+    url: https://git.yoctoproject.org/meta-yocto
+    path: sources/meta-yocto
+    branch: wrynose
+    layers:
+      meta-poky:
+      meta-yocto-bsp:

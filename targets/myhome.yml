@@ -1,0 +1,9 @@
+header:
+  version: 19
+  includes:
+    - targets/common.yml
+
+distro: myhome
+target:
+  - update-image
+
