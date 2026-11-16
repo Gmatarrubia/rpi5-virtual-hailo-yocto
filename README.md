@@ -215,7 +215,7 @@ Core scripts/services involved:
 3. Runs `podman-compose up -d` from `/data/homeassistant`
 4. Reports readiness to systemd (`Type=notify`)
 
-On stop, it executes `podman-compose down`.
+On stop, it executes `podman-compose stop`, leaving the containers in place for the next start.
 
 ## Typical Commands
 

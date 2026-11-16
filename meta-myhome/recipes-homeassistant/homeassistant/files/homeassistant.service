@@ -20,7 +20,7 @@ TimeoutStopSec=60s
 # Start containers in detached mode.
 ExecStart=/usr/bin/homeassistant-ctl.sh start
 
-# Stop and remove the containers when stopping the service.
+# Stop containers without removing them when stopping the service.
 ExecStop=/usr/bin/homeassistant-ctl.sh stop
 
 Restart=on-failure

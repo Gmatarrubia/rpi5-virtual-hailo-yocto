@@ -43,6 +43,8 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     rpio \
     rpi-gpio \
     htop \
+    net-tools \
+    lsof \
     rsync \
     expand-fs-service \
     e2fsprogs-resize2fs \

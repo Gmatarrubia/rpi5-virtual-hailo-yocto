@@ -101,14 +101,14 @@ services:
     restart: unless-stopped
     ports:
       # Expose port 53 on TCP and UDP for DNS queries
-      - "53:53/tcp"
-      - "53:53/udp"
+      - "192.168.1.35:53:53/tcp"
+      - "192.168.1.35:53:53/udp"
       # Expose port 67 on UDP for DHCP server
       #- "67:67/udp"
       # Expose port 68 on UDP for DHCP client
       - "68:68/udp"
       # Expose port 80 on TCP for HTTP web interface
-      - "80:80/tcp"
+      - "8081:8081/tcp"
       # Expose port 3000 on TCP for AdGuard Home's API
       - "3000:3000/tcp"
       # Expose port 853 on TCP for DNS-over-TLS (DoT)

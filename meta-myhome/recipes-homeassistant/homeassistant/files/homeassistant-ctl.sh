@@ -25,7 +25,7 @@ start() {
 
 stop() {
     echo "Stopping Home Assistant..."
-    /usr/bin/podman-compose down
+    /usr/bin/podman-compose stop
 }
 
 case "${1:-}" in
