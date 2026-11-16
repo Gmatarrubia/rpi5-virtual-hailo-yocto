@@ -1,0 +1,12 @@
+[Unit]
+Description=Publish Raspberry Pi Thermal Temp to MQTT
+After=network.online.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/python3 /usr/local/bin/rpi-temp-sensor.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

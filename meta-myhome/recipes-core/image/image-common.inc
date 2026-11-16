@@ -42,6 +42,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     raspi-gpio \
     rpio \
     rpi-gpio \
+    rpi-temp-sensor \
     htop \
     net-tools \
     lsof \
