@@ -23,8 +23,8 @@ SYSTEMD_AUTO_ENABLE:${PN} = "enable"
 do_install() {
     # Scripts install
     install -d "${D}${bindir}"
-    install -m 0655 "${UNPACKDIR}/rpi-abctl.sh" "${D}${bindir}/rpi-abctl"
-    install -m 0644 "${UNPACKDIR}/rpi-ab-commit.sh" "${D}${bindir}/rpi-ab-commit.sh"
+    install -m 0755 "${UNPACKDIR}/rpi-abctl.sh" "${D}${bindir}/rpi-abctl"
+    install -m 0755 "${UNPACKDIR}/rpi-ab-commit.sh" "${D}${bindir}/rpi-ab-commit.sh"
     # Service install
     install -d "${D}${systemd_unitdir}/system"
     install -m 0644 "${UNPACKDIR}/rpi-ab-commit.service" "${D}${systemd_unitdir}/system/rpi-ab-commit.service"

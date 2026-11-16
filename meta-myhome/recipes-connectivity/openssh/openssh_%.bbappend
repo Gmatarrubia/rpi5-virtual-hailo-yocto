@@ -1,1 +1,1 @@
-FILESEXTRAPATHS:prepend:debug := "${THISDIR}/files:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"

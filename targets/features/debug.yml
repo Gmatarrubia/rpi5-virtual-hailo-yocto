@@ -3,9 +3,4 @@ header:
 
 local_conf_header:
   debug_features: |
-    EXTRA_IMAGE_FEATURES += "allow-empty-password allow-root-login empty-root-password"
-    CORE_IMAGE_EXTRA_INSTALL += " socat \
-       git \
-       python3-pip \
-    "
     OVERRIDES:append = ":debug"

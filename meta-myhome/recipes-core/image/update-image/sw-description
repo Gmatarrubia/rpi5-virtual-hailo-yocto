@@ -13,12 +13,12 @@ software =
 						filename = "swupdate-podman-hass-image-@@MACHINE@@.rootfs.ext4.gz";
 						type = "raw";
 						compressed = "zlib";
-						device = "/dev/disk/by-label/rootfs-a";
+						device = "/dev/sda4";
 						sha256 = "$swupdate_get_sha256(swupdate-podman-hass-image-@@MACHINE@@.rootfs.ext4.gz)";
 					},
 					{
 						filename = "swupdate-podman-hass-boot.vfat";
-						decive = "/dev/disk/by-label/boot-a";
+						device = "/dev/sda2";
 						sha256 = "$swupdate_get_sha256(swupdate-podman-hass-boot.vfat)";
 						type = "raw";
 					}
@@ -37,12 +37,12 @@ software =
 						filename = "swupdate-podman-hass-image-@@MACHINE@@.rootfs.ext4.gz";
 						type = "raw";
 						compressed = "zlib";
-						device = "/dev/disk/by-label/rootfs-b";
+						device = "/dev/sda5";
 						sha256 = "$swupdate_get_sha256(swupdate-podman-hass-image-@@MACHINE@@.rootfs.ext4.gz)";
 					},
 					{
 						filename = "swupdate-podman-hass-boot.vfat";
-						decive = "/dev/disk/by-label/boot-b";
+						device = "/dev/sda3";
 						sha256 = "$swupdate_get_sha256(swupdate-podman-hass-boot.vfat)";
 						type = "raw";
 					}

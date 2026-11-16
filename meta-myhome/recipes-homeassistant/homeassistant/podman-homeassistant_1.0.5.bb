@@ -2,19 +2,14 @@ SUMMARY = "Open-source home automation platform running on Docker Compose contai
 HOMEPAGE = "https://home-assistant.io/"
 LICENSE = "CLOSED"
 
-inherit bob-user-vars systemd
-
-HOMEASSISTANT_USER ?= "${BOB_USER_NAME}"
-HOMEASSISTANT_USER[doc] = "homeassistent service runs as docker compose container."
-HOMEASSISTANT_DIR ?= "/home/${HOMEASSISTANT_USER}/homeassistant"
-HOMEASSISTANT_DIR[doc] = "Installation directory used by home-assistant."
-HOMEASSISTANT_CONFIG_DIR ?= "${HOMEASSISTANT_DIR}/config"
-HOMEASSISTANT_CONFIG_DIR[doc] = "Configuration directory used by home-assistant."
+inherit systemd
+require homeassistant.inc
 
 SRC_URI += "\
     file://homeassistant.service \
     file://ha_backup.tar.gz \
     file://compose.yml \
+    file://homeassistant-ctl.sh \
 "
 
 do_configure[noexec] = "1"
@@ -27,6 +22,7 @@ RDEPENDS:${PN} = " \
     bash \
     podman \
     podman-compose \
+    homeassistant-install \
 "
 
 SYSTEMD_AUTO_ENABLE = "enable"
@@ -36,23 +32,28 @@ do_install:append () {
     # Install docker compose stuff
     install -d "${D}${HOMEASSISTANT_DIR}"
     rsync -a "${UNPACKDIR}/" "${D}${HOMEASSISTANT_DIR}/"
-    chown -R "${HOMEASSISTANT_USER}" "${D}${HOMEASSISTANT_DIR}"
+    chown -R "${HOMEASSISTANT_USER}:${HOMEASSISTANT_USER}" "${D}${HOMEASSISTANT_DIR}"
     chmod -R 755 "${D}${HOMEASSISTANT_DIR}"
 
     # Replace compose.yml with the correct version
     install -m 0644 "${UNPACKDIR}/compose.yml" "${D}${HOMEASSISTANT_DIR}/compose.yml"
+
+    # Install start control script
+    install -d "${D}${bindir}"
+    install -m 0755 "${UNPACKDIR}/homeassistant-ctl.sh" "${D}${bindir}/homeassistant-ctl.sh"
 
     # Install systemd unit files and set correct config directory
     install -d "${D}${systemd_unitdir}/system"
     install -d "${D}${sysconfdir}/systemd/system/multi-user.target.wants/"
     install -m 0644 "${UNPACKDIR}/homeassistant.service" "${D}${systemd_unitdir}/system/"
     ln -s "${systemd_unitdir}/system/homeassistant.service" "${D}${sysconfdir}/systemd/system/multi-user.target.wants/homeassistant.service"
-    sed -i -e 's,@HOMEASSISTANT_DIR@,${HOMEASSISTANT_DIR},g' "${D}${systemd_unitdir}/system/homeassistant.service"
+    sed -i -e 's,@HOMEASSISTANT_DIR_INSTALL@,${HOMEASSISTANT_DIR_INSTALL},g' "${D}${systemd_unitdir}/system/homeassistant.service"
     sed -i -e 's,@HOMEASSISTANT_USER@,${HOMEASSISTANT_USER},g' "${D}${systemd_unitdir}/system/homeassistant.service"
 }
 
 FILES:${PN} += "\
     ${HOMEASSISTANT_DIR}/* \
     ${systemd_unitdir}/system/* \
+    ${bindir}/homeassistant-ctl.sh \
     ${sysconfdir}/systemd/system/multi-user.target.wants/* \
 "

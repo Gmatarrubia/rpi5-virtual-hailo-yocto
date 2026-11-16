@@ -1,9 +1,17 @@
 header:
   version: 19
+  includes:
+    - targets/sources/virtualization.yml
+    - targets/sources/hailo.yml
+    - targets/sources/swupdate.yml
+    - targets/sources/openembedded.yml
+    - targets/sources/bitbake.yml
+    - targets/sources/yocto.yml
 
-distro: myhome
-target:
-  - update-image
+repos:
+  meta-myhome:
+    path: meta-myhome
+
 
 bblayers_conf_header:
   standard: |
@@ -26,7 +34,7 @@ local_conf_header:
 
   save_space_configs: |
     INHERIT += "rm_work"
-    RM_WORK_EXCLUDE += "podman-homeassistant swupdate-core-image-minimal swupdate"
+    RM_WORK_EXCLUDE += "podman-homeassistant swupdate-podman-hass-image swupdate systemd-conf"
 
   full_disk_protection: |
     BB_DISKMON_DIRS = "\

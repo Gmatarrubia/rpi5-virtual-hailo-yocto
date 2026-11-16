@@ -1,0 +1,19 @@
+[Unit]
+Description=Install Home Assistant in the final path
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+
+# Allow enough time for the first image download.
+TimeoutStartSec=120
+
+# Start containers in detached mode.
+ExecStart=/usr/bin/hass-install.sh
+
+[Install]
+WantedBy=multi-user.target
+

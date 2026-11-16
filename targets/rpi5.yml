@@ -1,8 +1,7 @@
 header:
   version: 19
   includes:
-    - targets/sources/myhome.yml
-    - targets/sources/common.yml
+    - targets/myhome.yml
     - targets/sources/rpi-common.yml
 
 machine: raspberrypi5

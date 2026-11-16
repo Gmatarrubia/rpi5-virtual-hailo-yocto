@@ -1,0 +1,12 @@
+[Unit]
+Description=Create the /var/lib/containers mount point
+DefaultDependencies=no
+After=systemd-remount-fs.service media.mount
+
+[Service]
+Type=oneshot
+ExecStart=/bin/mkdir -p /var/lib/containers/
+RemainAfterExit=yes
+
+[Install]
+WantedBy=local-fs.target

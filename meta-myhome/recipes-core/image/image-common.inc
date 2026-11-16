@@ -7,8 +7,9 @@ EXTRA_USERS_PARAMS = " \
 	--create-home --home-dir ${BOB_USER_PATH} \
 	--groups users \
 	--user-group \
-    --password ${BOB_USER_PASSWORD} \
-    --shell /bin/sh \
+    --system \
+    --password '${BOB_USER_PASSWORD}' \
+    --shell /bin/bash \
     ${BOB_USER_NAME}; \
 "
 
@@ -41,9 +42,24 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     raspi-gpio \
     rpio \
     rpi-gpio \
+    htop \
+    rsync \
+    expand-fs-service \
+    e2fsprogs-resize2fs \
+    e2fsprogs-e2fsck \
+    sudo \
+    containers-mount \
     ${HAILO_PKGS} \
 "
 
+CORE_IMAGE_EXTRA_INSTALL:append:debug = "\
+    socat \
+    git \
+    python3-pip \
+"
+
+EXTRA_IMAGE_FEATURES:append:debug = " allow-empty-password allow-root-login empty-root-password"
+
 # ROOTFS Size configs
-IMAGE_ROOTFS_SIZE = "36700160"
+IMAGE_ROOTFS_SIZE = "2097152"
 IMAGE_ROOTFS_EXTRA_SPACE := ""

@@ -1,0 +1,10 @@
+header:
+  version: 19
+
+repos:
+  bitbake:
+    url: https://git.openembedded.org/bitbake
+    path: sources/bitbake
+    tag: yocto-6.0.2
+    layers:
+      .: disabled

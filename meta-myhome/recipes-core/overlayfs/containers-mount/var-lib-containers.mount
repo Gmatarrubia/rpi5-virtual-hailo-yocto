@@ -1,0 +1,13 @@
+[Unit]
+Description=Mount /dev/sda7 on /var/lib/containers
+Requires=containers-dirs.service
+After=containers-dirs.service
+
+[Mount]
+What=/dev/sda7
+Where=/var/lib/containers
+Type=ext4
+Options=defaults,sync
+
+[Install]
+WantedBy=local-fs.target
