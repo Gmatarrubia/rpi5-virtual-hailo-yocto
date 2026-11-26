@@ -7,7 +7,7 @@ After=containers-dirs.service
 What=/dev/sda7
 Where=/var/lib/containers
 Type=ext4
-Options=defaults,sync
+Options=defaults
 
 [Install]
 WantedBy=local-fs.target
