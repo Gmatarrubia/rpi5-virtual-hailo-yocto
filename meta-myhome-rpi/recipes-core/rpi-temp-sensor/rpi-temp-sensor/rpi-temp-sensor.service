@@ -4,7 +4,7 @@ After=network.online.target
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/python3 /usr/local/bin/rpi-temp-sensor.py
+ExecStart=/usr/bin/python3 /bin/rpi-temp-sensor.py
 Restart=always
 RestartSec=10
 
