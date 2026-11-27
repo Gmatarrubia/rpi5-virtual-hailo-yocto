@@ -8,6 +8,20 @@ MQTT_BROKER = "127.0.0.1"
 MQTT_PORT = 1883
 MQTT_USER = "ha-user"
 MQTT_PASSWORD = "your_mqtt_password"
+ENV_FILE_PATH = "/data/homeassistant/env"
+
+def load_mqtt_password(path=ENV_FILE_PATH):
+    try:
+        with open(path, encoding="utf-8") as env_file:
+            for line in env_file:
+                name, separator, value = line.partition("=")
+                if separator and name.strip() == "MQTT_PASSWORD":
+                    return value.rstrip("\r\n")
+    except FileNotFoundError:
+        pass
+    return MQTT_PASSWORD
+
+MQTT_PASSWORD = load_mqtt_password(ENV_FILE_PATH)
 
 TOPIC_TEMP_STATE = "homeassistant/sensor/rpi_thermal/temperature/state"
 TOPIC_TEMP_CONFIG = "homeassistant/sensor/rpi_thermal/temperature/config"
