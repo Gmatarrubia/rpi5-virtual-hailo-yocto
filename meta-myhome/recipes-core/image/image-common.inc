@@ -37,6 +37,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     nano \
     ssh-keys \
     podman-homeassistant \
+    podman-immich \
     util-linux-lsblk \
     bluez5 \
     raspi-gpio \

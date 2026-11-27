@@ -7,6 +7,7 @@ SRC_URI += "\
 do_install:append() {
     install -d ${D}/data
     install -d ${D}/data2
+    install -d ${D}/photos
 
     install -d ${D}/etc/sudoers.d
     install -m 0644 ${UNPACKDIR}/10-bob-sudo ${D}/etc/sudoers.d/10-bob-sudo
@@ -15,5 +16,6 @@ do_install:append() {
 FILES:${PN} += " \
     /data \
     /data2 \
+    /photos \
     /etc/sudoers.d/10-bob-sudo \
 "

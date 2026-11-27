@@ -29,3 +29,4 @@ output.*
 assistant-conf/*
 output.sh
 .kas_shell_history
+ha_backup.tar.gz

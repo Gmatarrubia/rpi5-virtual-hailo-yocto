@@ -1,0 +1,30 @@
+[Unit]
+Description=Immich
+Wants=network-online.target
+After=network-online.target podman.service immich-install.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=notify
+
+#User=@IMMICH_USER@
+WorkingDirectory=@IMMICH_DIR_INSTALL@
+
+# Allows systemd-notify command reports success.
+NotifyAccess=all
+
+# Allow enough time for the first image download.
+TimeoutStartSec=5min
+TimeoutStopSec=60s
+
+# Start containers in detached mode.
+ExecStart=/usr/bin/immich-ctl.sh start
+
+# Stop containers without removing them when stopping the service.
+ExecStop=/usr/bin/immich-ctl.sh stop
+
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+[ -d "@IMMICH_DIR_INSTALL@" ] && exit 1
+
+mkdir -p "@IMMICH_DIR_INSTALL@"
+chown -R @IMMICH_USER@:@IMMICH_USER@ "@IMMICH_DIR_INSTALL@"
+rsync -a @IMMICH_DIR@/* @IMMICH_DIR_INSTALL@
+chown -R @IMMICH_USER@:@IMMICH_USER@ "@IMMICH_DIR_INSTALL@"

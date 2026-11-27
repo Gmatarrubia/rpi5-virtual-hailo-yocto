@@ -1,2 +1,2 @@
-# Makes bob sudo user
-bob ALL=(ALL:ALL) ALL
+# Allow bob to use sudo only for su
+bob ALL=(ALL:ALL) /bin/su
